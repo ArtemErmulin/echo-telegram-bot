@@ -3,7 +3,7 @@ from typing import Optional
 from telegram import Update
 from telegram.ext import CallbackContext
 
-from clear_media_saver_bot.handlers.base import HandlerReturnType
+from echo_bot.handlers.base import HandlerReturnType
 
 
 async def echo(

@@ -4,8 +4,8 @@ import logging
 from telegram import Update
 from telegram.ext import Application, Updater
 
-from clear_media_saver_bot.handlers import set_handlers
-from clear_media_saver_bot.webserver import set_up_webserver, set_webhook
+from echo_bot.handlers import set_handlers
+from echo_bot.webserver import set_up_webserver, set_webhook
 from config import settings
 
 logger = logging.getLogger(__name__)

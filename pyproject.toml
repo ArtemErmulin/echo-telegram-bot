@@ -1,5 +1,5 @@
 [project]
-name = "clear-media-saver-bot"
+name = "echo-telegram-bot"
 version = "0.1.0"
 description = "Simple echo telegram bot"
 authors = [

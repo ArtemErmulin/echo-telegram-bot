@@ -1,6 +1,6 @@
 from telegram.ext import CallbackContext
 
-from clear_media_saver_bot.handlers.base import (
+from echo_bot.handlers.base import (
     UpdateNotEmptyMessage,
     check_empty_message,
 )
