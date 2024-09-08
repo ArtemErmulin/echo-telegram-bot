@@ -1,0 +1,42 @@
+[project]
+name = "clear-media-saver-bot"
+version = "0.1.0"
+description = "Simple echo telegram bot"
+authors = [
+    {name = "Artem Ermulin", email = "artem.ermulin@gmail.com"},
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "uvicorn>=0.30.6",
+    "flask[async]>=3.0.3",
+    "python-telegram-bot>=21.5",
+    "dynaconf>=3.2.6",
+]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[tool.uv]
+dev-dependencies = [
+    "flake8>=7.1.1",
+    "black>=24.8.0",
+    "isort>=5.13.2",
+    "autoflake>=2.3.1",
+]
+
+
+[tool.black]
+line-length = 79
+
+
+[tool.isort]
+profile = "black"
+
+
+[tool.autoflake]
+remove-all-unused-imports = true
+exclude = ["__init__.py"]
