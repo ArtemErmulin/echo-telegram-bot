@@ -9,6 +9,7 @@
 
 A simple echo Telegram bot template built using Docker and managed through Coolify. This bot can be used as a starting point for developing your own Telegram bots.
 
+> ⚠️ The project is still under development
 
 ## Features
 
