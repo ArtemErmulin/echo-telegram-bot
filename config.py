@@ -1,9 +1,9 @@
 from dynaconf import Dynaconf, Validator
 
-# CMSB - Clear Media Saver Bot
+# ETB - Echo Telegram Bot
 settings = Dynaconf(
     environments=True,
-    envvar_prefix="CMSB",
+    envvar_prefix="ETB",
     settings_files=["settings.toml", ".secrets.toml"],
     validators=[
         Validator("TELEGRAM_BOT_TOKEN", is_type_of=str, must_exist=True),
