@@ -57,7 +57,7 @@ The bot requires the following environment variables:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/echo-telegram-bot.git
+   git clone https://github.com/ArtemErmulin/echo-telegram-bot.git
    cd echo-telegram-bot
 
 2. Build and run the Docker container:
