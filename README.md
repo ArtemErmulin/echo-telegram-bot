@@ -7,43 +7,22 @@
 
 ---
 
-A simple echo Telegram bot template built using Docker and managed through Coolify. This bot can be used as a starting point for developing your own Telegram bots.
+A simple echo Telegram bot template built using Docker. This bot can be used as a starting point for developing your own Telegram bots.
 
-> ⚠️ The project is still under development
+> ⚠️ The template is still under development
 
 ## Features
 
 - Echoes back the messages it receives.
 - Easily deployable on any server or virtual machine.
-- Managed via [Coolify](https://coolify.io/), allowing for continuous deployment and webhook handling.
 - Includes customizable environment variables for easy configuration.
 
 ## Requirements
 
 - Docker installed on the target server/VM.
-- Coolify for managing the deployment (can be installed on the same or a separate server).
 - A GitHub repository where the bot's code is stored.
 
 ## Deployment
-
-### 1. Coolify Setup
-
-You can find instructions for installing and deploying Coolify on its [official website](https://coolify.io/). Once installed:
-
-- Link your GitHub account so Coolify can access your repositories.
-- Create a new application in Coolify and link it to your bot's repository.
-
-### 2. Bot Application Setup in Coolify
-
-To correctly set up the bot in Coolify, follow these steps:
-
-1. Set `Build Pack` to `Dockerfile`.
-2. In `Domains`, replace the suggested `http://` with `https://`. This is required for the webhook to function correctly.
-3. In `Network`, under `Ports Exposes`, specify port `8443`.
-4. In `Environment Variables`, configure the following variables for the bot (see below).
-5. Enable `Health Check` and specify the `Host` and `Port` (defaults are `0.0.0.0` and `8443`).
-
-### 3. Environment Variables
 
 The bot requires the following environment variables:
 
@@ -54,6 +33,8 @@ The bot requires the following environment variables:
 
 > **Note:** `ETB_` is the prefix used with the `dynaconf` library (see `config.py` for more details).
 
+These environment variables can be set in the `.secrets.toml` file.
+
 ## How to Use
 
 1. Clone this repository:
@@ -61,14 +42,14 @@ The bot requires the following environment variables:
    git clone https://github.com/ArtemErmulin/echo-telegram-bot.git
    cd echo-telegram-bot
 
-2. Build and run the Docker container:
+1. Create a `.secrets.toml` file from `.secrets_example.toml` in the root directory and add the required environment variables.
+
+1. Build and run the Docker container:
     ```bash
     docker-compose up --build -d
     ```
+> **Note:** When running locally (if the `WEBHOOK_URL` environment variable is not set), the bot will start in polling mode.
 
-3. Configure your environment variables in Coolify as mentioned above.
-
-4. Deploy the bot and ensure it's running by checking the webhook in Telegram.
 
 ## Contributing
 
