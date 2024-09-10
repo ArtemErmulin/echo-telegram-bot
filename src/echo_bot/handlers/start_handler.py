@@ -1,9 +1,6 @@
 from telegram.ext import CallbackContext
 
-from echo_bot.handlers.base import (
-    UpdateNotEmptyMessage,
-    check_empty_message,
-)
+from echo_bot.handlers.base import UpdateNotEmptyMessage, check_empty_message
 
 
 @check_empty_message

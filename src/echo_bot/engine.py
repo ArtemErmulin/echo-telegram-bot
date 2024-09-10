@@ -4,9 +4,9 @@ import logging
 from telegram import Update
 from telegram.ext import Application, Updater
 
+from config import settings
 from echo_bot.handlers import set_handlers
 from echo_bot.webserver import set_up_webserver, set_webhook
-from config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -41,8 +41,13 @@ def set_up_application(with_updater: bool) -> Application:
 
 async def send_startup_message(application: Application):
     """
-    Send a message to the admin chat when the bot is running.
+    Send a message to the admin chat (if 'ADMIN_CHAT_ID' available)
+    when the bot is running.
     """
+    # ADMIN_CHAT_ID is optional
+    if not settings.ADMIN_CHAT_ID:
+        return
+
     await application.bot.send_message(
         chat_id=settings.ADMIN_CHAT_ID,
         text="Bot is running.",
