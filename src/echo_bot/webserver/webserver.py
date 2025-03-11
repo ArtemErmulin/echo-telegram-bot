@@ -6,7 +6,7 @@ from flask import Flask, Response, request
 from telegram import Update
 from telegram.ext import Application
 
-from config import settings
+import config
 
 flask_app = Flask(__name__)
 
@@ -15,8 +15,8 @@ def set_up_webserver() -> uvicorn.Server:
     webserver = uvicorn.Server(
         config=uvicorn.Config(
             app=WsgiToAsgi(flask_app),
-            host=settings.HOST,
-            port=settings.PORT,
+            host=config.HOST,
+            port=config.PORT,
             use_colors=False,
         ),
     )
@@ -37,6 +37,6 @@ async def set_webhook(application: Application) -> None:
         return Response(status=HTTPStatus.OK)
 
     await application.bot.set_webhook(
-        url=f"{settings.WEBHOOK_URL}/telegram",
+        url=f"{config.WEBHOOK_URL}/telegram",
         allowed_updates=Update.ALL_TYPES,
     )

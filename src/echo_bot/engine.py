@@ -4,7 +4,7 @@ import logging
 from telegram import Update
 from telegram.ext import Application, Updater
 
-from config import settings
+import config
 from echo_bot.handlers import set_handlers
 from echo_bot.webserver import set_up_webserver, set_webhook
 
@@ -25,9 +25,8 @@ def set_up_application(with_updater: bool) -> Application:
     Application
         The application instance.
     """
-    application = (
-        Application.builder().token(settings.TELEGRAM_BOT_TOKEN).build()
-    )
+    bot_token: str = str(config.TELEGRAM_BOT_TOKEN)
+    application = Application.builder().token(bot_token).build()
 
     if with_updater:
         application.updater = Updater(
@@ -45,11 +44,11 @@ async def send_startup_message(application: Application):
     when the bot is running.
     """
     # ADMIN_CHAT_ID is optional
-    if not settings.ADMIN_CHAT_ID:
+    if not config.ADMIN_CHAT_ID:
         return
 
     await application.bot.send_message(
-        chat_id=settings.ADMIN_CHAT_ID,
+        chat_id=config.ADMIN_CHAT_ID,
         text="Bot is running.",
     )
 
@@ -89,7 +88,7 @@ def run():
     If the webhook is available, the bot will use the webhook.
     Otherwise, the bot will use polling.
     """
-    if settings.WEBHOOK_URL:
+    if config.WEBHOOK_URL:
         logger.info("Webhook is available. Webhook will be used.")
         asyncio.run(async_run())
 
