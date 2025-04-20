@@ -19,11 +19,11 @@ settings = Dynaconf(
 
 def get_int(key: str) -> int:
     try:
-        value: int = int(getattr(settings, key))
+        raw_value = getattr(settings, key)
+        value: int = int(raw_value)
 
     except ValueError:
-        raise ValueError(f"{key} must be an integer.")
-
+        raise ValueError(f"{key} must be an integer, but got '{raw_value}'.")
     return value
 
 
